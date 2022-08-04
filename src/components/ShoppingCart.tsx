@@ -20,7 +20,8 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
           {cartItems.map(item => (
             <CartItem key={item.id} {...item} />
           ))}
-          <div className="ms-auto fw-bold fs-5">
+          {cartItems.length === 0 ? <div className="d-flex align-items-center justify-content-center fw-bold fs-5">Cart is empty Now!</div>
+           : <div className="ms-auto fw-bold fs-5">
             Total{" "}
             {formatCurrency(
               cartItems.reduce((total, cartItem) => {
@@ -29,6 +30,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
               }, 0)
             )}
           </div>
+          }
         </Stack>
       </Offcanvas.Body>
     </Offcanvas>
